@@ -26,7 +26,7 @@
             <div class="row bg-secondary p-2 text-white">
                 <fieldset>
                     <legend>Formulário</legend>
-                    <form action="#" method="get">
+                    <form action="#" method="post">
                         <div class="form-group">
                             <label for="id_nome">Nome</label>
                             <input type="text" class="form-control" placeholder="Informe o nome" required id="id_nome" name="txtNome">
@@ -48,8 +48,8 @@
             -->
 
 
-            <p>Nome: <?php echo $_GET['txtNome'] ?></p>
-            <p>Email: <?= $_GET['txtEmail'] ?></p>
+            <p>Nome: <?= (isset($_POST['txtNome']) && !empty($_POST['txtNome'])) ? $_POST['txtNome'] : "" ?></p>
+            <p>Email: <?= isset($_POST['txtEmail'] && !empty($_POST['txtEmail'])) ? $_POST['txtEmail'] : "" ?></p>
         </div>
     </div>
 </body>
