@@ -19,6 +19,7 @@
                     <label for="idimg">Foto</label>
                     <input type="file" id="idimg" name="flImg" placeholder="Informe o foto do produto" class="form-control" required>
                 </div>
+                <button type="submit" class="btn btn-dark">Cadastrar</button>
             </form>
         </fieldset>
     </div>
