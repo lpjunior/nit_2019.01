@@ -2,7 +2,7 @@
     <div class="container mt-3">
         <fieldset>
             <legend>Formulário de Cadastro</legend>
-            <form>
+            <form action="registrar.php" method="post">
                 <div class="form-group">
                     <label for="idnome">Nome</label>
                     <input type="text" id="idnome" name="txtNome" placeholder="Informe o nome" class="form-control" required>

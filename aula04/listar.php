@@ -37,6 +37,17 @@
                             "imagem" => "prod3"
                         )
                     );
+
+                    $array = array(
+                        "id" => 4,
+                        "nome" => "Apagador",
+                        "quantidade" => "62 un.",
+                        "preco" => 10.45,
+                        "imagem" => "prod4"
+                    );
+
+                    # insere o elemento em uma posição do array
+                    array_push($lista, $array);
                 ?>
                 <!-- Estruturas de repetição -->
                 <?php for($i = 0; $i < sizeof($lista); $i++) : ?>
