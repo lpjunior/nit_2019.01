@@ -62,6 +62,5 @@ create table curso_disciplina(
     constraint fk_disciplina_cur foreign key(disciplina_id) references tb_disciplina(iddisciplina)
 );
 
-
 /* Comando para visualizar a descrição da tabela */
 desc tb_curso;
