@@ -24,13 +24,24 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Gestão de Produtos
+                    Gestão de Cursos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="cadastrar.php">Cadastro</a>
-                        <a class="dropdown-item" href="listar.php">Listagem</a>
+                        <h6 class="dropdown-header">Cursos</h6>
+                        <a class="dropdown-item" href="cadastrar_curso.php">Cadastro</a>
+                        <a class="dropdown-item" href="listar_curso.php">Listagem</a>
                         <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="localizar.php">Localizar</a>
+                        <h6 class="dropdown-header">Disciplinas</h6>
+                        <a class="dropdown-item" href="cadastrar_disciplina.php">Cadastro</a>
+                        <a class="dropdown-item" href="listar_disciplina.php">Listagem</a>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header">Professores</h6>
+                        <a class="dropdown-item" href="cadastrar_professor.php">Cadastro</a>
+                        <a class="dropdown-item" href="listar_professor.php">Listagem</a>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header">Alunos</h6>
+                        <a class="dropdown-item" href="cadastrar_aluno.php">Cadastro</a>
+                        <a class="dropdown-item" href="listar_aluno.php">Listagem</a>
                     </div>
                 </li>
                 <li class="nav-item">
