@@ -53,6 +53,20 @@ create table tb_disciplina(
     constraint fk_professor_d foreign key(professor_id) references tb_professor(idprofessor)
 );
 
+/* alterar estrutura da tabela disciplina */
+alter table tb_disciplina add column nome varchar(150) not null after iddisciplina;
+alter table tb_disciplina drop foreign key fk_professor_d;
+alter table tb_disciplina drop column professor_id;
+
+/* Criação da tabela professor_disciplina */
+create table professor_disciplina(
+    professor_id int not null,
+    disciplina_id int not null,
+    primary key(professor_id, disciplina_id),
+    constraint fk_professor_disciplina foreign key(professor_id) references tb_professor(idprofessor),
+    constraint fk_disciplina_professor foreign key(disciplina_id) references tb_disciplina(iddisciplina)
+);
+
 /* Criação da tabela curso_disciplina */
 create table curso_disciplina(
 	curso_id int not null,

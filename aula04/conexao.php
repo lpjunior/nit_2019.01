@@ -12,7 +12,7 @@
         // entregar(retornar) o contexto da conexão
         $link = mysqli_connect(SERVER, USER, PASS, DB, PORT);
         // set encode UTF-8
-        mysqli_set_charset($link, "utf-8");
+        mysqli_set_charset($link, "utf8");
         return $link;
     }
 
@@ -25,7 +25,7 @@
         exit;
     }
 
-    echo "Conexão estabelecida com sucesso.<br>";
-    echo "Informações do servidor: " . mysqli_get_host_info($con);
+    #echo "Conexão estabelecida com sucesso.<br>";
+    #echo "Informações do servidor: " . mysqli_get_host_info($con);
 
-    mysqli_close($con);
+    #mysqli_close($con);
