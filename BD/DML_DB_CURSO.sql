@@ -48,5 +48,6 @@ update tb_curso set nome = 'Linguagem de Programação' where idcurso = 3;
 delete from tb_curso where idcurso = 2;
 
 
-
+insert into tb_professor(nome, cpf) values ('Luis', '123.456.789-00');
+insert into tb_telefone(numero, professor_id) values ('21964875646', 1);
 

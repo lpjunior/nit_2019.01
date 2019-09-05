@@ -1,19 +1,18 @@
 <?php
-    ## ARQUIVO RESPONSAVEL POR RESGATAR E REGISTRAR OS DADOS VINDO DO FORMULARIO DE CADASTRO DE PRODUTO
-
-    /*$nome = $_POST['txtNome'];
-    $quantidade = $_POST['txtQtd'];
-    $preco = $_POST['txtPreco'];
-    $imagem = $_POST['flImg'];*/
+    require('./professorCRUD.php');
+    ## ARQUIVO RESPONSAVEL POR RESGATAR E REGISTRAR OS DADOS VINDO DO FORMULARIO DE CADASTRO DE PROFESSOR
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nome = filter_input(INPUT_POST, "txtNome") ?? "";
-        $quantidade = filter_input(INPUT_POST, "txtQtd");
-        $preco = filter_input(INPUT_POST, "txtPreco");
-        $imagem = filter_input(INPUT_POST, "flImg");
+        $cpf = filter_input(INPUT_POST, "txtCpf");
+        $telefone = filter_input(INPUT_POST, "txtTelefone");
     
-        echo "$nome<br>$quantidade<br>$preco<br>$imagem<br>";
+        if(createProfessor($nome, $cpf, $telefone)) {
+            echo "gravado com sucesso";
+        } else {
+            echo "falha ao gravar";
+        }
     } else {
         # redirecionamento de página
-        header('Location: cadastrar.php');
+        header('Location: cadastrar_professor.php');
     }
