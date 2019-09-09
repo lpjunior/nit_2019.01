@@ -1,4 +1,7 @@
-<?php include './header.php' ?>
+<?php 
+    include './header.php';
+    include './consulta_cursos.php';
+?>
     <div class="container mt-3">
         <table class="table table-striped table-hover text-center">
             <thead>
@@ -12,43 +15,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Estrutura de array -->
-                <?php
-                    $lista = array(
-                        array(
-                            "id" => 1,
-                            "nome" => "Caneta",
-                            "quantidade" => "100 un.",
-                            "preco" => 10.90,
-                            "imagem" => "prod1"
-                        ),
-                        array(
-                            "id" => 2,
-                            "nome" => "Lapis",
-                            "quantidade" => "250 un.",
-                            "preco" => 3.50,
-                            "imagem" => "prod2"
-                        ),
-                        array(
-                            "id" => 3,
-                            "nome" => "Borracha",
-                            "quantidade" => "132 un.",
-                            "preco" => 0.45,
-                            "imagem" => "prod3"
-                        )
-                    );
-
-                    $array = array(
-                        "id" => 4,
-                        "nome" => "Apagador",
-                        "quantidade" => "62 un.",
-                        "preco" => 10.45,
-                        "imagem" => "prod4"
-                    );
-
-                    # insere o elemento em uma posição do array
-                    array_push($lista, $array);
-                ?>
                 <!-- Estruturas de repetição -->
                 <?php for($i = 0; $i < sizeof($lista); $i++) : ?>
                 <tr>
