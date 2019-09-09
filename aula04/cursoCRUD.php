@@ -39,7 +39,7 @@ function getCursos() {
 
         return $listaCursos;
     } catch(\Throwable $th) {
-        throw new \Exception("Erro ao gravar no banco", 1);
+        throw new \Exception("Erro ao listar do banco", 1);
         return Array(); // retorna uma estrutura de array vazio
     } finally {
         mysqli_close($link);
