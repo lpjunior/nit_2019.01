@@ -8,25 +8,19 @@
                 <tr>
                     <th>#</th>
                     <th>Nome</th>
-                    <th>Quantidade</th>
-                    <th>Preço</th>
-                    <th>Imagem</th>
                     <th colspan="2">Editar</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Estruturas de repetição -->
-                <?php for($i = 0; $i < sizeof($lista); $i++) : ?>
+                <?php foreach (listaCursos() as $curso): ?>
                 <tr>
-                    <td><?= $i + 1 ?></td>
-                    <td><?= $lista[$i]['nome'] ?></td>
-                    <td><?= $lista[$i]['quantidade'] ?></td>
-                    <td><?= $lista[$i]['preco'] ?></td>
-                    <td><a href="<?= $lista[$i]['imagem'] ?>"><i class="fas fa-camera-retro"></i></a></td>
-                    <td><a href="#"><i class="fas fa-edit"></i></a></td>
-                    <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                    <td><?= $curso['idcurso'] ?></td>
+                    <td><?= $curso['nome'] ?></td>
+                    <td><a href="edit_curso.php?id=<?= $curso['idcurso'] ?>"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="delete_curso.php?id=<?= $curso['idcurso'] ?>"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
