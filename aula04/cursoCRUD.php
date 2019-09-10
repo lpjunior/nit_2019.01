@@ -45,3 +45,20 @@ function getCursos() {
         mysqli_close($link);
     }
 }
+
+# Função responsável por excluir o curso
+function deleteCurso($id) {
+    $link = abreConexao();
+
+    $query = "delete from tb_curso where idcurso = {$id}";
+    try{
+        if(mysqli_query($link, $query)) {
+            return true;
+        }
+    } catch(\Throwable $th) {
+        throw new \Exception("Erro ao deletar no banco", 1);
+        return false;
+    } finally {
+        mysqli_close($link);
+    }
+}
