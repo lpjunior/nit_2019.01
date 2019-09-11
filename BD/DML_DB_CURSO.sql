@@ -51,3 +51,8 @@ delete from tb_curso where idcurso = 2;
 insert into tb_professor(nome, cpf) values ('Luis', '123.456.789-00');
 insert into tb_telefone(numero, professor_id) values ('21964875646', 1);
 
+/* Junção de tabelas */
+/* Inner Join - seleção de todos os campos requeridos */
+SELECT nome, cpf, numero as 'telefone' FROM tb_professor
+INNER JOIN tb_telefone
+ON tb_telefone.professor_id = tb_professor.idprofessor;
