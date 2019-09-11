@@ -17,7 +17,7 @@
                 <tr>
                     <td><?= $curso['idcurso'] ?></td>
                     <td><?= $curso['nome'] ?></td>
-                    <td><span data-toggle="modal" data-target="#cursoModal" class="" data-curso_id="<?= $curso['idcurso'] ?>" data-curso_name="<?= $curso['nome'] ?>" data-product-quantity="1"><i class="fas fa-edit"></i></span></td>
+                    <td><span data-toggle="modal" data-target="#cursoModal" class="" data-curso_id="<?= $curso['idcurso'] ?>" data-curso_name="<?= $curso['nome'] ?>" data-product-quantity="1"><i class="fas fa-edit text-primary"></i></span></td>
                     <td><a href="delete_curso.php?id=<?= $curso['idcurso'] ?>" onclick="return confirm('Você tem certeza?')"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
                 <?php endforeach; ?>
