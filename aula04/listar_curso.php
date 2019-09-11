@@ -17,7 +17,11 @@
                 <tr>
                     <td><?= $curso['idcurso'] ?></td>
                     <td><?= $curso['nome'] ?></td>
-                    <td><span data-toggle="modal" data-target="#cursoModal" class="" data-curso_id="<?= $curso['idcurso'] ?>" data-curso_name="<?= $curso['nome'] ?>" data-product-quantity="1"><i class="fas fa-edit text-primary"></i></span></td>
+                    <!--
+                        data-curso_id - propriedade responsavel por guardar o id do curso
+                        data-curso_name -  propriedade responsavel por guardar o nome do curso
+                     -->
+                    <td><span data-toggle="modal" data-target="#cursoModal" class="" data-curso_id="<?= $curso['idcurso'] ?>" data-curso_name="<?= $curso['nome'] ?>"><i class="fas fa-edit text-primary"></i></span></td>
                     <td><a href="delete_curso.php?id=<?= $curso['idcurso'] ?>" onclick="return confirm('Você tem certeza?')"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
                 <?php endforeach; ?>
@@ -37,8 +41,8 @@
                         <fieldset>
                             <form id="edit_form" action="edit_curso.php" method="post">
                                 <div class="form-group">
-                                    <label for="id_" class="sr-only">Nome</label>
-                                    <input type="hidden" id="id_" name="txtId" class="form-control" required>
+                                    <label for="id_" class="sr-only">Id</label>
+                                    <input type="hidden" id="id_" name="txtId" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="idnome">Nome</label>
@@ -58,12 +62,16 @@
 <?php include './footer.php' ?>
 
 <script>
+    // criação das variaveis
     var curso_id = '';
     var curso_name = '';
 
     jQuery('body').on('click', '[data-toggle="modal"]', function() {
+        // Resgata os valores guardados em data-curso_id e data-curso_name
         curso_id = $(this).attr('data-curso_id');
         curso_name = $(this).attr('data-curso_name');
+
+        // Atribui os valores as campos do formulario do modal
         $("#id_").attr({'value':curso_id});
         $("#idnome").attr({'value':curso_name});
     });
