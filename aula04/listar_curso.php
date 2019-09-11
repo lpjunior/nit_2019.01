@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="modal-footer clearfix">
-                    <button type="submit" form="edit_form" class="pull-left btn btn-default" data-dismiss="modal">Editar</button>
+                    <button type="submit" form="edit_form" class="pull-left btn btn-default">Editar</button>
                     <button type="button" class="pull-right btn btn-default" data-dismiss="modal">Fechar</button>
                 </div>
             </div>
