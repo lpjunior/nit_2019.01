@@ -17,27 +17,39 @@
                 <tr>
                     <td><?= $curso['idcurso'] ?></td>
                     <td><?= $curso['nome'] ?></td>
-                    <td><a href="edit_curso.php?id=<?= $curso['idcurso'] ?>"><i class="fas fa-edit"></i></a></td>
+                    <td><span data-toggle="modal" data-target="#cursoModal" class="" data-curso_id="<?= $curso['idcurso'] ?>" data-curso_name="<?= $curso['nome'] ?>" data-product-quantity="1"><i class="fas fa-edit"></i></span></td>
                     <td><a href="delete_curso.php?id=<?= $curso['idcurso'] ?>" onclick="return confirm('Você tem certeza?')"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
-    
-    <span data-toggle="modal" data-target="#AvanzaModal" data-remote="http://www.avanzaeninternet.com/producto-de-ejemplo/?add-to-cart=463" class="miclase" data-product_id="463" data-product_sku="45678652" data-product-quantity="1">AÑADIR A CARRITO</span>
 
-    <div class="modal fade" id="AvanzaModal" tabindex="-1" role="dialog" aria-labelledby="AvanzaModalLabel">
+    <div class="modal fade" id="cursoModal" tabindex="-1" role="dialog" aria-labelledby="cursoModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+                    <h4>Editar Curso</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                
+                    <div class="container mt-3">
+                        <fieldset>
+                            <form id="edit_form" action="edit_curso.php" method="post">
+                                <div class="form-group">
+                                    <label for="id_" class="sr-only">Nome</label>
+                                    <input type="hidden" id="id_" name="txtId" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="idnome">Nome</label>
+                                    <input type="text" id="idnome" name="txtNome" placeholder="Informe o nome" class="form-control" required>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
                 </div>
                 <div class="modal-footer clearfix">
-                    <button type="button" class="pull-left btn btn-default" data-dismiss="modal">Salvar</button>
+                    <button type="submit" form="edit_form" class="pull-left btn btn-default" data-dismiss="modal">Editar</button>
                     <button type="button" class="pull-right btn btn-default" data-dismiss="modal">Fechar</button>
                 </div>
             </div>
@@ -46,14 +58,13 @@
 <?php include './footer.php' ?>
 
 <script>
-    var remoto_href = '';
+    var curso_id = '';
+    var curso_name = '';
 
     jQuery('body').on('click', '[data-toggle="modal"]', function() {
-        if(remoto_href != jQuery(this).data("remote")) {
-            remoto_href = jQuery(this).data("remote");
-            jQuery(jQuery(this).data("target")).removeData('bs.modal');
-            jQuery(jQuery(this).data("target")).find('.modal-body').empty();
-            jQuery(jQuery(this).data("target") + ' .modal-body').load(jQuery(this).data("remote") + '/?modal=1');
-        }
+        curso_id = $(this).attr('data-curso_id');
+        curso_name = $(this).attr('data-curso_name');
+        $("#id_").attr({'value':curso_id});
+        $("#idnome").attr({'value':curso_name});
     });
 </script>
