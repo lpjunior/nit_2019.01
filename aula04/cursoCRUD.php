@@ -62,3 +62,21 @@ function deleteCurso($id) {
         mysqli_close($link);
     }
 }
+
+# Função responsável por atualizar o curso
+
+function updateCurso($idcurso, $nome) {
+   $link = abreConexao();
+
+   $query = "update tb_curso set nome = '{$nome}' where idcurso = {$idcurso}";
+   try{
+       if(mysqli_query($link, $query)) {
+           return true;
+       }
+   } catch(\Throwable $th) {
+       throw new \Exception("Erro ao atualizar no banco", 1);
+       return false;
+   } finally {
+       mysqli_close($link);
+   }
+}
