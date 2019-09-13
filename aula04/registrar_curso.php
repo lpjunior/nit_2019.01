@@ -1,6 +1,6 @@
 <?php
 
-    require('./cursoCRUD.php');
+    require('./CRUDcurso.php');
 
     ## ARQUIVO RESPONSAVEL POR RESGATAR E REGISTRAR OS DADOS VINDO DO FORMULARIO DE CADASTRO DE CURSO
 

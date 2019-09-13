@@ -35,32 +35,15 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>Editar disciplina</h4>
+                    <h4>Disciplina</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="container mt-3">
-                        <fieldset>
-                            <form id="edit_form" action="edit_disciplina.php" method="post">
-                                <div class="form-group">
-                                    <label for="id_" class="sr-only">Id</label>
-                                    <input type="hidden" id="id_" name="txtId" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="idnome">Nome</label>
-                                    <input type="text" id="idnome" name="txtNome" placeholder="Informe o nome" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="idnome">Descrição</label>
-                                    <textarea id="iddescricao" name="txtDescricao" placeholder="Informe a descrição" class="form-control" required></textarea>
-                                </div>
-                            </form>
-                        </fieldset>
+                    <div class="form-body container mt-3">
+                        
                     </div>
                 </div>
                 <div class="modal-footer clearfix">
-                    <button type="submit" form="edit_form" class="pull-left btn btn-default">Editar</button>
-                    <button type="button" class="pull-right btn btn-default" data-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
@@ -85,8 +68,45 @@
         $("#iddescricao").val(disciplina_description);
 
         if(jQuery(this).data("disciplina_id") == null) {
-            jQuery(jQuery(this).data("target")).find('.modal-body').empty();
-            jQuery(jQuery(this).data("target") + ' .modal-body').load($("#disciplinaModal .modal-body").append('<p>' + disciplina_description + '</p>'));
+            jQuery(jQuery(this)
+                .data("target"))
+                .find('.modal-body')
+                .empty();
+
+            jQuery(jQuery(this)
+                .data("target") + ' .modal-body')
+                .load($("#disciplinaModal .modal-body")
+                .append('<p>' + disciplina_description + '</p>'));
+        } else {
+            jQuery(jQuery(this)
+                .data("target"))
+                .find('.modal-body')
+                .empty();
+
+            jQuery(jQuery(this)
+                .data("target") + ' .modal-body')
+                .load($("#disciplinaModal .modal-body")
+                .append(`<fieldset>
+                        <form id="edit_form" action="edit_disciplina.php" method="post">
+                            <div class="form-group">
+                                <label for="id_" class="sr-only">Id</label>
+                                <input type="hidden" id="id_" name="txtId" class="form-control" value="${disciplina_id}">
+                            </div>
+                            <div class="form-group">
+                                <label for="idnome">Nome</label>
+                                <input type="text" id="idnome" name="txtNome" placeholder="Informe o nome" class="form-control"  value="${disciplina_name}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="idnome">Descrição</label>
+                                <textarea id="iddescricao" name="txtDescricao" placeholder="Informe a descrição" class="form-control" required>${disciplina_description}</textarea>
+                            </div>
+                        </form>
+                    </fieldset>`));
+
+            jQuery(jQuery(this).data("target") + ' .modal-body')
+                .load($("#disciplinaModal .modal-body")
+                .append(`<button type="submit" form="edit_form" class="pull-left btn btn-default">Editar</button>
+                    <button type="button" class="pull-right btn btn-default" data-dismiss="modal">Fechar</button>`));
         }
     });
 </script>

@@ -1,6 +1,6 @@
 <?php
 
-    require './cursoCRUD.php';
+    require './CRUDcurso.php';
 
     if(isset($_SERVER['HTTP_REFERER'])) {
         if($_SERVER['HTTP_REFERER'] == 'http://localhost/aula_php/aula04/listar_curso.php' && $_SERVER['REQUEST_METHOD'] === 'POST') {

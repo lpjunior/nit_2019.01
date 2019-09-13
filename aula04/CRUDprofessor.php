@@ -12,7 +12,7 @@
         $query = "insert into tb_professor(cpf, nome) values ('{$cpf}', '{$nome}')";
         try{ // Tenta executar
             if(mysqli_query($link, $query)) { // registra o professor
-                $id = mysqli_insert_id(); // resgata o ID gerado para o professor
+                $id = mysqli_insert_id($link); // resgata o ID gerado para o professor
                 $query = "insert into tb_telefone(numero, professor_id) values ('{$telefone}', {$id})";
                 if(mysqli_query($link, $query)) { // insere o telefone do professor
                     return true;

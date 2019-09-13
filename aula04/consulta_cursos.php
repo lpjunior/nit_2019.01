@@ -1,5 +1,5 @@
 <?php
-    require './cursoCRUD.php';
+    require './CRUDcurso.php';
 
     function listaCursos() {
         return getCursos();

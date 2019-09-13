@@ -1,5 +1,5 @@
 <?php
-    require('./professorCRUD.php');
+    require('./CRUDprofessor.php');
     ## ARQUIVO RESPONSAVEL POR RESGATAR E REGISTRAR OS DADOS VINDO DO FORMULARIO DE CADASTRO DE PROFESSOR
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
