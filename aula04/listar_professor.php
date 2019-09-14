@@ -17,35 +17,35 @@
                 <!-- Estruturas de repetição -->
                 <?php foreach (listaProfessores() as $professor): ?>
                 <tr>
-                    <td><?= $curso['idcurso'] ?></td>
-                    <td><?= $curso['nome'] ?></td>
-                    <td><?= $curso['cpf'] ?></td>
-                    <td><?= $curso['telefone'] ?></td>
+                    <td><?= $professor['idprofessor'] ?></td>
+                    <td><?= $professor['nome'] ?></td>
+                    <td><?= $professor['cpf'] ?></td>
+                    <td><?= $professor['telefone'] ?></td>
                     <!--
                         data-professor_id - propriedade responsavel por guardar o id do professor
                         data-professor_name -  propriedade responsavel por guardar o nome do professor
                         data-professor_cpf -  propriedade responsavel por guardar o cpf do professor
                         data-professor_telefone -  propriedade responsavel por guardar o telefone do professor
                      -->
-                    <td><span data-toggle="modal" data-target="#cursoModal" class="" data-curso_id="<?= $curso['idcurso'] ?>" data-curso_name="<?= $curso['nome'] ?>" data-professor_cpf="<?= $curso['cpf'] ?>" data-professor_telefone="<?= $curso['telefone'] ?>"><i class="fas fa-edit text-primary"></i></span></td>
-                    <td><a href="delete_curso.php?id=<?= $curso['idcurso'] ?>" onclick="return confirm('Você tem certeza?')"><i class="fas fa-trash-alt"></i></a></td>
+                    <td><span data-toggle="modal" data-target="#professorModal" class="" data-professor_id="<?= $professor['idprofessor'] ?>" data-professor_name="<?= $professor['nome'] ?>" data-professor_cpf="<?= $professor['cpf'] ?>" data-professor_telefone="<?= $professor['telefone'] ?>"><i class="fas fa-edit text-primary"></i></span></td>
+                    <td><a href="delete_professor.php?id=<?= $professor['idprofessor'] ?>" onclick="return confirm('Você tem certeza?')"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
 
-    <div class="modal fade" id="cursoModal" tabindex="-1" role="dialog" aria-labelledby="cursoModalLabel">
+    <div class="modal fade" id="professorModal" tabindex="-1" role="dialog" aria-labelledby="professorModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>Editar Curso</h4>
+                    <h4>Editar professor</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <div class="container mt-3">
                         <fieldset>
-                            <form id="edit_form" action="edit_curso.php" method="post">
+                            <form id="edit_form" action="edit_professor.php" method="post">
                                 <div class="form-group">
                                     <label for="id_" class="sr-only">Id</label>
                                     <input type="hidden" id="id_" name="txtId" class="form-control">
@@ -83,7 +83,7 @@
     var professor_telefone = '';
 
     jQuery('body').on('click', '[data-toggle="modal"]', function() {
-        // Resgata os valores guardados em data-curso_id e data-curso_name
+        // Resgata os valores guardados em data-professor_id e data-professor_name
         professor_id = $(this).attr('data-professor_id');
         professor_name = $(this).attr('data-professor_name');
         professor_cpf = $(this).attr('data-professor_cpf');
@@ -92,7 +92,7 @@
         // Atribui os valores as campos do formulario do modal
         $("#id_").attr({'value':professor_id});
         $("#idnome").attr({'value':professor_name});
-        $("#idcpf").attr({'value':professor_cpf});
+        $("#idCpf").attr({'value':professor_cpf});
         $("#idtelefone").attr({'value':professor_telefone});
     });
 </script>
