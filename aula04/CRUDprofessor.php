@@ -75,10 +75,10 @@ function deleteProfessor($id) {
 
     $link = abreConexao();
 
-    $query = "delete from tb_professor where idprofessor = '{$id}'";
+    $query = "delete from tb_telefone where professor_id = '{$id}'";
     try{
         if(mysqli_query($link, $query)) {
-            $query = "delete from tb_telefone where professor_id = '{$id}'";
+            $query = "delete from tb_professor where idprofessor = '{$id}'";
             if(mysqli_query($link, $query)) {
                 return true;
             }
