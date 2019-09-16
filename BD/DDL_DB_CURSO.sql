@@ -78,3 +78,11 @@ create table curso_disciplina(
 
 /* Comando para visualizar a descrição da tabela */
 desc tb_curso;
+
+
+/* Criação da tabela login */
+create table login(
+    idlogin int primary key auto_increment,
+    username varchar(20) not null unique,
+    password varchar(255) not null
+);

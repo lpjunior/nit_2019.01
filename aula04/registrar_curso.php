@@ -1,16 +1,18 @@
 <?php
-
+    session_start();
     require('./CRUDcurso.php');
 
     ## ARQUIVO RESPONSAVEL POR RESGATAR E REGISTRAR OS DADOS VINDO DO FORMULARIO DE CADASTRO DE CURSO
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // verifica se a sessão está ativa
+    if(isset($_SESSION['login'])) {
         $nome = filter_input(INPUT_POST, "txtNome") ?? "";
         
         if(createCurso($nome)) {
-            echo "Curso gravado com sucesso";
+            // cria uma sessão com chave 'msg' e atribui um valor
+            $_SESSION['msg'] = "Curso gravado com sucesso";
         } else {
-            echo "Falha ao gravar o curso";
+            $_SESSION['msg'] = "Falha ao gravar o curso";
         }
     } else {
         # redirecionamento de página

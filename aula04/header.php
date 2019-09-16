@@ -1,3 +1,7 @@
+<?php 
+    # inicia a sessão nos arquivos
+    session_start();
+?>
 <!doctype html>
 <html lang="pt-br">
   <head>

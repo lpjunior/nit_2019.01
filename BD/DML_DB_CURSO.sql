@@ -56,3 +56,23 @@ insert into tb_telefone(numero, professor_id) values ('21964875646', 1);
 SELECT nome, cpf, numero as 'telefone' FROM tb_professor
 INNER JOIN tb_telefone
 ON tb_telefone.professor_id = tb_professor.idprofessor;
+
+/** Funções no banco **/
+/* limit - serve para limitar a quantidade de linhas(registros) a serem exibidas */
+select * from tb_disciplina limit 3;
+
+/* count - serve para contar */
+select count(*) from tb_disciplina;
+
+/* ordenação */
+select * from tb_disciplina order by nome asc;
+select * from tb_disciplina order by nome desc;
+
+/* distinção */
+select distinct descricao from tb_disciplina order by nome asc;
+
+/* Md5 - criptografia. Muito utilizado para senhas simples */
+select md5('senha@123'); -- ada3c39413b4f6284c8301257812190e
+
+/* Inserção na tabela login */
+insert into login(username, password) values ('admin', md5('Senha@123'));
