@@ -15,9 +15,6 @@
             <button type="submit" form="form_login" formaction="login.php" formmethod="post" class="btn btn-light">Acessar</button>
         </form>
     </fieldset>
-    <div class="row pl-3 pt-3">
-        <p class="text-danger"><?= isset($_SESSION['msg']) ? $_SESSION['msg'] : "" ?></p>
-    </div>
 </div>
 
 <?php include './footer.php'; ?>

@@ -11,7 +11,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+  
+    <!-- jQuery Growl -->
+    <link href="resources/css/jquery.growl.css" rel="stylesheet" type="text/css" />
+    
     <title>Projeto PHP</title>
   </head>
   <body>
@@ -49,7 +52,11 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1">Logout</a>
+                <?php if(isset($_SESSION['login'])) : ?>
+                    <a class="nav-link" href="logout.php" tabindex="-1">Logout</a>
+                <?php else : ?>
+                    <a class="nav-link" href="form_login.php" tabindex="-1">Login</a>
+                <?php endif; ?>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

@@ -8,5 +8,16 @@
     
     <!-- Font-Awesome -->
     <script src="https://kit.fontawesome.com/708adf11dc.js"></script>
+    <!-- jQuery Growl -->
+    <script src="resources/js/jquery.growl.js" type="text/javascript"></script>
+    
+    <script>
+      $.growl.<?= $_SESSION['status'] ?>({ message: "<?=$_SESSION['msg'] ?>" });
+    </script>
+
+    <?php 
+      unset($_SESSION['status']);
+      unset($_SESSION['msg']);
+    ?>
   </body>
 </html>
