@@ -36,4 +36,36 @@ public class Cliente {
 	public void setNomeCliente(String nome) {
 		nomeCliente = nome;
 	}
+
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public String getCpfCliente() {
+		return cpfCliente;
+	}
+
+	public void setCpfCliente(String cpfCliente) {
+		this.cpfCliente = cpfCliente;
+	}
+
+	public String getEmailCliente() {
+		return emailCliente;
+	}
+
+	public void setEmailCliente(String emailCliente) {
+		this.emailCliente = emailCliente;
+	}
+
+	public String getSenhaCliente() {
+		return senhaCliente;
+	}
+
+	public void setSenhaCliente(String senhaCliente) {
+		this.senhaCliente = senhaCliente;
+	}
 }
