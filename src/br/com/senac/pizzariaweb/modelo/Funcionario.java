@@ -1,42 +1,22 @@
 package br.com.senac.pizzariaweb.modelo;
 
-public class Funcionario {
+public class Funcionario extends Pessoa {
 
-	private Integer id;
-	private String nome;
-	private String cpf;
+
 	private double salario;
 	private int matricula;
 	
 	// ctrl + espaço
 	public Funcionario() {
 	}
+	
+	public Funcionario(int idFun, String nmFun, String cpfFun, double salario, int matricula) {
+		super(idFun, nmFun, cpfFun);
+		this.salario = salario;
+		this.matricula = matricula;
+	}
 
 	// (alt + shift + s) + r
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
 	public double getSalario() {
 		return salario;
 	}

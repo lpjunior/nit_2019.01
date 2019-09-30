@@ -1,25 +1,21 @@
 package br.com.senac.pizzariaweb.modelo;
 
-public class Cliente {
+// o "start" da herança é dado pela palavra "extends"
+public class Cliente extends Pessoa {
 	
 	// atributos da classe cliente
-	private Integer idCliente;
-	private String nomeCliente;
-	private String cpfCliente;
 	private String emailCliente;
 	private String senhaCliente;
 	
 	// construtor sem argumentos
 	public Cliente() {
-		
+		super(); // chama o construtor sem argumentos da classe pai por padrão 
 	}
 	
 	// construtor com argumentos
 	public Cliente(Integer idCliente, String nomeCliente, String cpfCliente, String emailCliente, String senhaCliente) {
-		// passagem de valores vindas do construtor para os atributos da classe
-		this.idCliente = idCliente;
-		this.nomeCliente = nomeCliente;
-		this.cpfCliente = cpfCliente;
+		// super - referencia a superclasse (classe pai)
+		super(idCliente, nomeCliente, cpfCliente); // é a chamada do construtor da classe pai
 		this.emailCliente = emailCliente;
 		this.senhaCliente = senhaCliente;
 		
@@ -29,30 +25,6 @@ public class Cliente {
 	// Métodos de encapsulamento
 	
 	// método get - retorna o valor do atributo
-	public String getNomeCliente() {
-		return nomeCliente;
-	}
-	
-	public void setNomeCliente(String nome) {
-		nomeCliente = nome;
-	}
-
-	public Integer getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
-	}
-
-	public String getCpfCliente() {
-		return cpfCliente;
-	}
-
-	public void setCpfCliente(String cpfCliente) {
-		this.cpfCliente = cpfCliente;
-	}
-
 	public String getEmailCliente() {
 		return emailCliente;
 	}
