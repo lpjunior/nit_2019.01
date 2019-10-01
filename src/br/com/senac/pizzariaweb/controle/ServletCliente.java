@@ -22,23 +22,27 @@ public class ServletCliente extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getServletPath().equals("/cliente/adicionar")) { // adicionar
-			adicionar(request, response);
-		} else if(request.getServletPath().equals("/cliente/remover")) { // remover
+		if(request.getServletPath().equals("/cliente/remover")) { // remover
 			remover(request, response);
 		} else if(request.getServletPath().equals("/cliente/editar")) { // editar
 			editar(request, response);
-		} else if(request.getServletPath().equals("/cliente/atualizar")) { // atualizar
-			atualizar(request, response);
 		} else if(request.getServletPath().equals("/cliente/listar")) { // listar
 			listar(request, response);
 		} else if(request.getServletPath().equals("/cliente/localizar")) { // localizar
 			localizar(request, response);
+		} else {
+			response.getWriter().append("Página não localizada!!! " + request.getMethod());
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		if(request.getServletPath().equals("/cliente/adicionar")) { // adicionar
+			adicionar(request, response);
+		} else if(request.getServletPath().equals("/cliente/atualizar")) { // remover
+			atualizar(request, response);
+		} else {
+			response.getWriter().append("Página não localizada!!! " + request.getMethod());
+		}
 	}
 
 	protected void adicionar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
