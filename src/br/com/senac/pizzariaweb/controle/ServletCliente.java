@@ -13,20 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.senac.pizzariaweb.modelo.Cliente;
 import br.com.senac.pizzariaweb.util.SequenceID;
 
-@WebServlet({ "/cliente/adicionar", // post
-			  "/cliente/remover",   // get
-			  "/cliente/editar",    // get
-			  "/cliente/atualizar", // post
-			  "/cliente/listar",    // get
-			  "/cliente/localizar"  // get
+@WebServlet({ "/cliente/adicionar",
+			  "/cliente/remover",
+			  "/cliente/editar",
+			  "/cliente/atualizar",
+			  "/cliente/listar",
+			  "/cliente/localizar"
 			  })
 public class ServletCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<Cliente> clientes;
+	private SequenceID sequenceID;
 	
     public ServletCliente() {
         super();
         clientes = new ArrayList<Cliente>();
+        sequenceID = new SequenceID();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -68,7 +70,7 @@ public class ServletCliente extends HttpServlet {
 		
 		Cliente c = new Cliente();
 		
-		c.setId(SequenceID.nextID());
+		c.setId(sequenceID.nextID());
 		c.setNome(nome);
 		c.setEmailCliente(email);
 		c.setCpf(cpf);
@@ -76,19 +78,19 @@ public class ServletCliente extends HttpServlet {
 		
 		clientes.add(c);
 		
-		for (Cliente cli : clientes) {
-			response.getWriter().append("Cliente cadastrado com sucesso!\n"
-					+ "Seus dados cadastrais foram:\n"
-					+ "ID: " + cli.getId()
-					+ "\nNome: " + cli.getNome()
-					+ "\nEmail: " + cli.getEmailCliente()
-					+ "\nCPF: " + cli.getCpf()
-					+ "\nSenha: " + cli.getSenhaCliente() + "\n\n");
-		}
+		response.getWriter().append("Cliente cadastrado com sucesso!<br>"
+			+ "Seus dados cadastrais foram:<br>"
+			+ "ID: " + c.getId()
+			+ "<br>Nome: " + c.getNome()
+			+ "<br>Email: " + c.getEmailCliente()
+			+ "<br>CPF: " + c.getCpf()
+			+ "<br>Senha: " + c.getSenhaCliente() + "<br><br>");
 	}
 	
 	protected void remover(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("chamada ao método remover via " + request.getMethod());
+		if(clientes.remove(Integer.parseInt(request.getParameter("id")) - 1) != null) {
+			response.getWriter().append("Cliente excluído.");			
+		}	
 	}
 	
 	protected void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -100,7 +102,16 @@ public class ServletCliente extends HttpServlet {
 	}
 	
 	protected void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("chamada ao método listar via " + request.getMethod());
+		for (Cliente cli : clientes) {
+			
+			response.getWriter().append(
+					"Cliente:<br>"
+					+ "ID: " + cli.getId()
+					+ "<br>Nome: " + cli.getNome()
+					+ "<br>Email: " + cli.getEmailCliente()
+					+ "<br>CPF: " + cli.getCpf()
+					+ "<br>Senha: " + cli.getSenhaCliente() + "<br><br>");
+		}
 	}
 	
 	protected void localizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

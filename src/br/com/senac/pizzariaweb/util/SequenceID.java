@@ -3,10 +3,10 @@ package br.com.senac.pizzariaweb.util;
 public class SequenceID {
 
 	// atributo estatico
-	private static int id;
+	private int id;
 	
 	// o método incrementa o id e retorna o valor
-	public static int nextID() {
+	public int nextID() {
 		return ++id;
 	}
 }
