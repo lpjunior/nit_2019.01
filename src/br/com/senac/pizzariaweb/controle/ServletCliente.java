@@ -1,6 +1,7 @@
 package br.com.senac.pizzariaweb.controle;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.senac.pizzariaweb.modelo.Cliente;
+import br.com.senac.pizzariaweb.persistencia.ClienteDAO;
 import br.com.senac.pizzariaweb.util.SequenceID;
 
 @WebServlet({ "/cliente/adicionar",
@@ -22,15 +24,20 @@ import br.com.senac.pizzariaweb.util.SequenceID;
 			  })
 public class ServletCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private List<Cliente> clientes;
-	private SequenceID sequenceID;
 	
+//	private List<Cliente> clientes;
+//	private SequenceID sequenceID;
+	private ClienteDAO dao;
     public ServletCliente() {
         super();
-        clientes = new ArrayList<Cliente>();
-        sequenceID = new SequenceID();
+//        CLIENTES = NEW ARRAYLIST<CLIENTE>();
+//        SEQUENCEID = NEW SEQUENCEID();
+        dao = new ClienteDAO();
     }
 
+    // via método HTTP GET
+    // HttpServletRequest - responsável por gerir todas as requisições enviadas para essa servlet
+    // HttpServletResponse - responsável por gerir todas as respostas dessa servlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getServletPath().equals("/cliente/remover")) { // remover
 			remover(request, response);
@@ -44,7 +51,8 @@ public class ServletCliente extends HttpServlet {
 			response.getWriter().append("Página não localizada!!! " + request.getMethod());
 		}
 	}
-
+	
+    // via método HTTP POST
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getServletPath().equals("/cliente/adicionar")) { // adicionar
 			adicionar(request, response);
@@ -63,6 +71,8 @@ public class ServletCliente extends HttpServlet {
 		 * Agora no Java usaremos o método getParameter(), esse método é utilizado para ambos casos,
 		 * seja para dados enviados via post ou via get
 		 */
+		
+		// TUDO que vem da requisição, vem em formato String
 		String nome = request.getParameter("nome"); // atributo name do input html
 		String email = request.getParameter("email"); // atributo name do input html
 		String cpf = request.getParameter("cpf"); // atributo name do input html
@@ -70,13 +80,11 @@ public class ServletCliente extends HttpServlet {
 		
 		Cliente c = new Cliente();
 		
-		c.setId(sequenceID.nextID());
+//		c.setId(sequenceID.nextID());
 		c.setNome(nome);
 		c.setEmailCliente(email);
 		c.setCpf(cpf);
 		c.setSenhaCliente(senha);
-		
-		clientes.add(c);
 		
 		response.getWriter().append("Cliente cadastrado com sucesso!<br>"
 			+ "Seus dados cadastrais foram:<br>"
@@ -85,12 +93,20 @@ public class ServletCliente extends HttpServlet {
 			+ "<br>Email: " + c.getEmailCliente()
 			+ "<br>CPF: " + c.getCpf()
 			+ "<br>Senha: " + c.getSenhaCliente() + "<br><br>");
+		
+		// adiciona a lista de clientes
+//		clientes.add(c);
+		try {
+			dao.gravar(c);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	protected void remover(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(clientes.remove(Integer.parseInt(request.getParameter("id")) - 1) != null) {
-			response.getWriter().append("Cliente excluído.");			
-		}	
+//		IF(CLIENTES.REMOVE(INTEGER.PARSEINT(REQUEST.GETPARAMETER("ID")) - 1) != NULL) {
+//			RESPONSE.GETWRITER().APPEND("CLIENTE EXCLUÍDO.");			
+//		}	
 	}
 	
 	protected void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -102,16 +118,16 @@ public class ServletCliente extends HttpServlet {
 	}
 	
 	protected void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		for (Cliente cli : clientes) {
-			
-			response.getWriter().append(
-					"Cliente:<br>"
-					+ "ID: " + cli.getId()
-					+ "<br>Nome: " + cli.getNome()
-					+ "<br>Email: " + cli.getEmailCliente()
-					+ "<br>CPF: " + cli.getCpf()
-					+ "<br>Senha: " + cli.getSenhaCliente() + "<br><br>");
-		}
+//		for (Cliente cli : clientes) { // foreach
+//			
+//			response.getWriter().append(
+//					"Cliente:<br>")
+//					.append("ID: " + cli.getId())
+//					.append("<br>Nome: " + cli.getNome())
+//					.append("<br>Email: " + cli.getEmailCliente())
+//					.append("<br>CPF: " + cli.getCpf())
+//					.append("<br>Senha: " + cli.getSenhaCliente() + "<br><br>");
+//		}
 	}
 	
 	protected void localizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

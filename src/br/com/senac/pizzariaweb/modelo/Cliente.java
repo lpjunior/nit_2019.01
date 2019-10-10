@@ -1,7 +1,7 @@
 package br.com.senac.pizzariaweb.modelo;
 
 // o "start" da herança é dado pela palavra "extends"
-public class Cliente extends Pessoa {
+public class Cliente extends Pessoa { // Classe Cliente irá especializar a classe Pessoa
 	
 	// atributos da classe cliente
 	private String emailCliente;
@@ -16,6 +16,7 @@ public class Cliente extends Pessoa {
 	public Cliente(Integer idCliente, String nomeCliente, String cpfCliente, String emailCliente, String senhaCliente) {
 		// super - referencia a superclasse (classe pai)
 		super(idCliente, nomeCliente, cpfCliente); // é a chamada do construtor da classe pai
+		// dados especificos de cliente
 		this.emailCliente = emailCliente;
 		this.senhaCliente = senhaCliente;
 		
