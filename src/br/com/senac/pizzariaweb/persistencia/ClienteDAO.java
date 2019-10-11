@@ -12,15 +12,17 @@ public class ClienteDAO extends DAO {
 	private Connection conn;
 	
 	public ClienteDAO() {
+
+	}
+	
+	public void gravar(Cliente c) throws SQLException {
 		try {
 			conn = getConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("ERRO AO TENTAR ABRIR A CONEXÃO");
 		}
-	}
-	
-	public void gravar(Cliente c) throws SQLException {
+		
 // serve preparar todos parametros da sua query, dentre outras coisas, ele protege contra ataques de SQL Injection
 		
 /* Pensando em SQL..
