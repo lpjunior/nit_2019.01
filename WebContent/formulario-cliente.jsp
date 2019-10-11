@@ -13,7 +13,7 @@
 	<div class="container">
 		<fieldset>
 			<legend>Cadastro de Clientes da Pizzaria Web</legend>
-			<form action="">
+			<form action="cliente/adicionar" method="post">
 				<div class="form-group">
 					<label for="nome_id"></label>
 					<input type="text" name="txtNome" id="nome_id" placeholder="Informe o nome" class="form-control">

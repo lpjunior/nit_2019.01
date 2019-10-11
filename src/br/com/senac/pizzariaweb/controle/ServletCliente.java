@@ -73,10 +73,10 @@ public class ServletCliente extends HttpServlet {
 		 */
 		
 		// TUDO que vem da requisição, vem em formato String
-		String nome = request.getParameter("nome"); // atributo name do input html
-		String email = request.getParameter("email"); // atributo name do input html
-		String cpf = request.getParameter("cpf"); // atributo name do input html
-		String senha = request.getParameter("senha"); // atributo name do input html
+		String nome = request.getParameter("txtNome"); // atributo name do input html
+		String email = request.getParameter("txtEmail"); // atributo name do input html
+		String cpf = request.getParameter("txtCPF"); // atributo name do input html
+		String senha = request.getParameter("txtSenha"); // atributo name do input html
 		
 		Cliente c = new Cliente();
 		
