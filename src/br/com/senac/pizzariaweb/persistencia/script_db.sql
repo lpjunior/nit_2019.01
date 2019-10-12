@@ -9,3 +9,11 @@ create table tb_cliente(
 	email varchar(150) not null unique,
 	senha varchar(255) not null
 );
+
+create table tb_funcionario(
+	id int primary key auto_increment,
+	matricula int not null unique,
+	nome varchar(150) not null,
+	cpf varchar(11) not null,
+	salario double not null
+);

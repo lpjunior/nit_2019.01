@@ -14,6 +14,11 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
+	public Pessoa(String nome, String cpf) {
+		this.nome = nome;
+		this.cpf = cpf;
+	}
+
 	public Integer getId() {
 		return id;
 	}

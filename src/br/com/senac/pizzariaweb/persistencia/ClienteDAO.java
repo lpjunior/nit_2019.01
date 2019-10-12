@@ -2,6 +2,7 @@ package br.com.senac.pizzariaweb.persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.com.senac.pizzariaweb.modelo.Cliente;
@@ -15,7 +16,7 @@ public class ClienteDAO extends DAO {
 
 	}
 	
-	public void gravar(Cliente c) throws SQLException {
+	public int gravar(Cliente c) throws SQLException {
 		try {
 			conn = getConnection();
 		} catch (SQLException e) {
@@ -38,7 +39,7 @@ public class ClienteDAO extends DAO {
  * O preparestatement irá tratar essa injeção, não deixando casos como esse ocorrer. 
  */
 		PreparedStatement pstmt = null;
-		
+		ResultSet rs = null;
 		/* try - serve para executar um bloco
 		 * catch - ele executa alguma instrução caso ocorra uma exceção
 		 * finally - ele sempre executa uma instrução indiferente do caso
@@ -49,27 +50,36 @@ public class ClienteDAO extends DAO {
 		 */
 		
 		try {
-			pstmt = conn.prepareStatement("insert into tb_cliente(nome, cpf, email, senha) values(?, ?, ?, md5(?))");
+			pstmt = conn.prepareStatement("insert into tb_cliente(nome, cpf, email, senha) values(?, ?, ?, md5(?))", PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			pstmt.setString(1, c.getNome());
 			pstmt.setString(2, c.getCpf());
 			pstmt.setString(3, c.getEmailCliente());
 			pstmt.setString(4, c.getSenhaCliente());
 			
-			int flag = pstmt.executeUpdate();
-			
 			/* 0 - false
 			 * 1 - true
 			 * */
-			if(flag == 0) {
+			int flag = pstmt.executeUpdate();
+			int id;
+			if(flag != 0) {				
+				rs = pstmt.getGeneratedKeys();
+				rs.next();
+				id = rs.getInt(1);
+			}else {
 				throw new SQLException("Erro ao gravar no banco!");
 			}
+			
+			return id;
 		} finally {
 			if(conn != null) {
 				conn.close();
 			}
 			if(pstmt != null) {
 				pstmt.close();
+			}
+			if(rs != null) {
+				rs.close();
 			}
 		}
 	}

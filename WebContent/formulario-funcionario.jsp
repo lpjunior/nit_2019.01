@@ -12,23 +12,23 @@
   <body>
 	<div class="container">
 		<fieldset>
-			<legend>Cadastro de Clientes da Pizzaria Web</legend>
-			<form action="cliente/adicionar" method="post">
+			<legend>Cadastro de Funcionários da Pizzaria Web</legend>
+			<form action="funcionario/adicionar" method="post">
 				<div class="form-group">
 					<label for="nome_id">Nome</label>
 					<input type="text" name="txtNome" id="nome_id" placeholder="Informe o nome" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="matricula_id">Matricula</label>
+					<input type="text" name="txtMatricula" id="matricula_id" placeholder="Informe a matricula" class="form-control">
 				</div>
 				<div class="form-group">
 					<label for="cpf_id">CPF</label>
 					<input type="text" name="txtCPF" id="cpf_id" placeholder="Informe o CPF" class="form-control">
 				</div>
 				<div class="form-group">
-					<label for="email_id">E-mail</label>
-					<input type="email" name="txtEmail" id="email_id" placeholder="Informe o email" class="form-control">
-				</div>
-				<div class="form-group">
-					<label for="pass_id">Senha</label>
-					<input type="password" name="txtSenha" id="pass_id" placeholder="Informe a senha" class="form-control">
+					<label for="salario_id">Salário</label>
+					<input type="text" name="txtSalario" id="salario_id" placeholder="Informe o salário" class="form-control">
 				</div>
 				<button type="submit" class="btn btn-dark">Cadastrar</button>
 			</form>

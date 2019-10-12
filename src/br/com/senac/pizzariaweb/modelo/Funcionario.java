@@ -15,6 +15,12 @@ public class Funcionario extends Pessoa {
 		this.salario = salario;
 		this.matricula = matricula;
 	}
+	
+	public Funcionario(String nmFun, String cpfFun, double salario, int matricula) {
+		super(nmFun, cpfFun);
+		this.salario = salario;
+		this.matricula = matricula;
+	}
 
 	// (alt + shift + s) + r
 	public double getSalario() {

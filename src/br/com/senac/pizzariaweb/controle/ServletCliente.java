@@ -75,7 +75,7 @@ public class ServletCliente extends HttpServlet {
 		// TUDO que vem da requisição, vem em formato String
 		String nome = request.getParameter("txtNome"); // atributo name do input html
 		String email = request.getParameter("txtEmail"); // atributo name do input html
-		String cpf = request.getParameter("txtCPF"); // atributo name do input html
+		String cpf = request.getParameter("txtCPF").replace(".", "").replace("-", ""); // atributo name do input html
 		String senha = request.getParameter("txtSenha"); // atributo name do input html
 		
 		Cliente c = new Cliente();
@@ -86,20 +86,23 @@ public class ServletCliente extends HttpServlet {
 		c.setCpf(cpf);
 		c.setSenhaCliente(senha);
 		
-		response.getWriter().append("Cliente cadastrado com sucesso!<br>"
-			+ "Seus dados cadastrais foram:<br>"
-			+ "ID: " + c.getId()
-			+ "<br>Nome: " + c.getNome()
-			+ "<br>Email: " + c.getEmailCliente()
-			+ "<br>CPF: " + c.getCpf()
-			+ "<br>Senha: " + c.getSenhaCliente() + "<br><br>");
-		
 		// adiciona a lista de clientes
 //		clientes.add(c);
 		try {
-			dao.gravar(c);
+			c.setId(dao.gravar(c));
+			
+			response.getWriter()
+					.append("Cliente cadastrado com sucesso!\n")
+					.append("Seus dados cadastrais foram:\n")
+					.append("ID: " + c.getId())
+					.append("\nNome: " + c.getNome())
+					.append("\nEmail: " + c.getEmailCliente())
+					.append("\nCPF: " + c.getCpf())
+					.append("\nSenha: " + c.getSenhaCliente());
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			response.getWriter().append("Falha ao gravar no banco\n");
 		}
 	}
 	

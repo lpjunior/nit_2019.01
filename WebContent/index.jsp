@@ -7,6 +7,7 @@
 <title>Pizzaria Web 402</title>
 </head>
 <body>
-	<a href="formulario-cliente.jsp">Formulário de cadastro</a>
+	<a href="formulario-cliente.jsp">Formulário de cadastro cliente</a><br>
+	<a href="formulario-funcionario.jsp">Formulário de cadastro funcionário</a>
 </body>
 </html>
