@@ -16,12 +16,18 @@
 			<caption>Lista de Clientes da Pizzaria Web</caption>
 			<thead>
 				<tr>
-					<th></th>
+					<th>#</th>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>E-mail</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td></td>
+					<td>1</td>
+					<td>Luis</td>
+					<td>123.456.789-00</td>
+					<td>luis@gmail.com</td>
 				</tr>
 			</tbody>
 		</table>
