@@ -14,7 +14,7 @@
 					<a href="formulario-cliente.jsp">Formulário de cadastro cliente</a><br>
 				</li>
 				<li>
-					<a href="lista-clientes.jsp">Lista de cadastro cliente</a><br>
+					<a href="cliente/listar">Lista de cadastro cliente</a><br>
 				</li>
 			</ul>
 		</li>
