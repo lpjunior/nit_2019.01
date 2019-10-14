@@ -13,7 +13,7 @@
   <body>
     <div class="container">
 		<table class="table table-striped">
-			<caption>Lista de Clientes da Pizzaria Web</caption>
+			<caption>Lista de Clientes - Pizzaria Web</caption>
 			<thead>
 				<tr>
 					<th>#</th>

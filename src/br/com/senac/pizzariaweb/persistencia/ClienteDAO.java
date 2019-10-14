@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.senac.pizzariaweb.modelo.Cliente;
 
@@ -71,6 +73,43 @@ public class ClienteDAO extends DAO {
 			}
 			
 			return id;
+		} finally {
+			if(conn != null) {
+				conn.close();
+			}
+			if(pstmt != null) {
+				pstmt.close();
+			}
+			if(rs != null) {
+				rs.close();
+			}
+		}
+	}
+	
+	public List<Cliente> listar() throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			pstmt = conn.prepareStatement("select * from tb_cliente");
+			
+			rs = pstmt.executeQuery(); // pstmt.executeQuery() - método responsável por disparar querys de consulta no banco e retornar o resultado
+			
+			List<Cliente> clientes = new ArrayList<Cliente>();
+			Cliente c;
+			while(rs.next()) { // rs.next() - valida se existe um valor e anda o cursor
+				// monta o obj de cliente
+				c = new Cliente();
+				c.setId(rs.getInt(1));
+				c.setNome(rs.getString(2));
+				c.setCpf(rs.getString(3));
+				c.setEmailCliente(rs.getString(4));
+				
+				// atribui o obj de cliente a lista
+				clientes.add(c);
+			}
+			
+			 return clientes;
 		} finally {
 			if(conn != null) {
 				conn.close();
