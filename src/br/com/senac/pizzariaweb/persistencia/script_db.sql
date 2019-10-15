@@ -1,5 +1,7 @@
 create database pizzariaweb;
 
+alter schema pizzariaweb  default character set utf8 default collate utf8_general_ci;
+
 use pizzariaweb;
 
 create table tb_cliente(

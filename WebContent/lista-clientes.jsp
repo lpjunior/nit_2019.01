@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="pt-BR">
   <head>
@@ -23,12 +24,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Luis</td>
-					<td>123.456.789-00</td>
-					<td>luis@gmail.com</td>
-				</tr>
+				<!-- Tag responsavel por fazer repetições no HTML c:foreach -->
+				<c:forEach items="${listaClientes}" var="cliente">
+				<!-- EL - Expression Language -->
+					<tr>
+						<td>${cliente.id}</td>
+						<td>${cliente.nome}</td>
+						<td>${cliente.cpf}</td>
+						<td>${cliente.emailCliente}</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
