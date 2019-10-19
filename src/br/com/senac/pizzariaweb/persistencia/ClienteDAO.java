@@ -145,6 +145,90 @@ public class ClienteDAO extends DAO {
 		}
 	}
 	
+	public Cliente buscaPeloId(int id) throws SQLException {
+		
+		abreConexao();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			pstmt = conn.prepareStatement("select * from tb_cliente where id = ?");
+			pstmt.setInt(1, id); // bind
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return criaCliente(rs);
+			}
+			
+			return null;
+		} finally {
+			if(conn != null) {
+				conn.close();
+			}
+			if(pstmt != null) {
+				pstmt.close();
+			}
+			if(rs != null) {
+				rs.close();
+			}
+		}
+	}
+	public void deletaCliente(int id) throws SQLException {
+		abreConexao();
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement("delete from tb_cliente where id = ?");
+			pstmt.setInt(1, id); // bind
+			
+			int flag = pstmt.executeUpdate();
+			
+			if(flag == 0) {
+				throw new SQLException("Erro ao excluir o cliente: " + id + " do banco!");
+			}
+
+		} finally {
+			if(conn != null) {
+				conn.close();
+			}
+			if(pstmt != null) {
+				pstmt.close();
+			}
+		}
+	}
+	
+	public void editarCliente(Cliente c) throws SQLException {
+		abreConexao();
+
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement("update tb_cliente set nome = ?, cpf = ?, email = ? where id = ?");
+			
+			pstmt.setString(1, c.getNome());
+			pstmt.setString(2, c.getCpf());
+			pstmt.setString(3, c.getEmailCliente());
+			pstmt.setInt(4, c.getId());
+			
+			int flag = pstmt.executeUpdate();
+			
+			if(flag == 0) {				
+				throw new SQLException("Erro ao atualizar o cliente: " + c.getId() + " no banco!");
+			}
+			
+		} finally {
+			if(conn != null) {
+				conn.close();
+			}
+			if(pstmt != null) {
+				pstmt.close();
+			}
+		}
+	}
+	
 	private void abreConexao() {
 		try {
 			conn = getConnection();

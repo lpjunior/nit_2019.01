@@ -85,7 +85,14 @@ public class ServletCliente extends HttpServlet {
 	}
 	
 	protected void remover(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		int id = Integer.parseInt(request.getParameter("id"));
+		try {
+			dao.deletaCliente(id);
+			response.sendRedirect("listar");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			response.getWriter().append("Falha ao excluir no banco\n");
+		}
 	}
 	
 	protected void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
