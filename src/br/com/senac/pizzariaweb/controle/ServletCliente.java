@@ -96,11 +96,33 @@ public class ServletCliente extends HttpServlet {
 	}
 	
 	protected void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("chamada ao método editar via " + request.getMethod());
+		int id = Integer.valueOf(request.getParameter("id"));
+
+		try {
+			request.setAttribute("cliente", dao.buscaPeloId(id));
+			request.getRequestDispatcher("/formulario-edit-cliente.jsp").forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			response.sendRedirect("../pagina-erro.jsp?msg=error_localizar");
+		}
 	}
-	
+
 	protected void atualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("chamada ao método atualizar via " + request.getMethod());
+		int id = Integer.valueOf(request.getParameter("txtId"));
+		String nome = request.getParameter("txtNome");
+		String cpf = request.getParameter("txtCPF");
+		String email = request.getParameter("txtEmail");
+		
+		try {
+			// chamar o método editarCliente()
+			dao.editarCliente(new Cliente(id, nome, cpf, email, null));
+			
+			// chama novamente o método listar
+			listar(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			response.sendRedirect("../pagina-erro.jsp?msg=error_atualizar");
+		}
 	}
 	
 	protected void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
